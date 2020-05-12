@@ -1,7 +1,11 @@
-.form-control {
+input[type="text"] {
     outline: 0;
-    padding: 9px 15px;
-    border-radius: 3px;
+    width: 80%;
+    height: 35px;
+    padding: 0px 15px;
+    border-radius: 2px;
     border: 1px solid #dde4e6;
     background: #f8f8f8;
+    font-size: 12px;
+    line-height: 12px;
 }
