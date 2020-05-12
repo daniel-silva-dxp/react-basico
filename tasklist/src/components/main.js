@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Button from "./forms/button";
 import Input from "./forms/input";
 import Header from "./header/header";
+import { FaPlus } from "react-icons/fa";
 
 import "./main.css";
 
@@ -28,7 +29,9 @@ class Main extends Component {
                             }}
                             msg="Your Task"
                         />
-                        <Button method="submit">ADD</Button>
+                        <Button method="submit">
+                            <FaPlus />
+                        </Button>
                         <div>{this.state.newTask}</div>
                     </form>
                 </div>
