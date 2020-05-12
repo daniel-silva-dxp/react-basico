@@ -1,11 +1,14 @@
+"user strict";
 import React from "react";
+import Main from "./components/main";
 import "./App.css";
+import Button from "./components/forms/button";
 
 function App() {
     return (
-        <header className="App-header">
-            <h1>Task List</h1>
-        </header>
+        <div>
+            <Main />
+        </div>
     );
 }
 
