@@ -9,14 +9,14 @@ button {
 }
 .btn {
     display: inline-block;
-    border: 1px solid #1e1e1e;
+    margin: 2px;
+    border: 1px solid #f04c64;
     border-radius: 2px;
     text-align: center;
     font-family: "Roboto Mono", monospace;
     font-weight: 600;
     -webkit-transition: all 0.2s ease-out;
     transition: all 0.2s ease-out;
-    margin: 2px;
 }
 .btn-medium {
     height: 35px;
@@ -27,7 +27,7 @@ button {
 }
 .btn-dark {
     color: #fff;
-    background: #1e1e1e;
+    background: #f04c64;
 }
 .btn-dark:hover {
     background: #fff;
