@@ -1,0 +1,7 @@
+.form-control {
+    outline: 0;
+    padding: 9px 15px;
+    border-radius: 3px;
+    border: 1px solid #dde4e6;
+    background: #f8f8f8;
+}
