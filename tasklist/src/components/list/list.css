@@ -1,0 +1,41 @@
+.my-tasks {
+    margin: 20px 15px;
+    padding: 0;
+    font-family: "Roboto Mono", monospace;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+}
+.my-tasks li {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    -webkit-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+.my-tasks li:hover {
+    background: #f8f8f8;
+}
+.my-tasks li div {
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.edit,
+.delete {
+    cursor: pointer;
+    -webkit-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+.edit {
+    color: #323540;
+}
+.delete {
+    color: #f04c64;
+}
+.edit:hover,
+.delete:hover {
+    color: #b4b4b4;
+}
