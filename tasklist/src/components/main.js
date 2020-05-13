@@ -1,10 +1,10 @@
 "user strict";
 import React, { Component } from "react";
 import Header from "./header/header";
-import { FaEdit, FaWindowClose } from "react-icons/fa";
+import Form from "./forms/form";
 
 import "./main.css";
-import Form from "./forms/form";
+import List from "./list/list";
 
 class Main extends Component {
     constructor() {
@@ -20,7 +20,28 @@ class Main extends Component {
         };
     }
 
+    componentDidMount() {
+        const tasks = JSON.parse(localStorage.getItem("tasks"));
+
+        if (!tasks) {
+            return;
+        }
+
+        this.setState({
+            tasks
+        });
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        const { tasks } = this.state;
+        if (tasks === prevState.tasks) {
+            return;
+        }
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+    }
+
     render() {
+        const { tasks } = this.state;
         return (
             <div className="main">
                 <Header />
@@ -58,40 +79,24 @@ class Main extends Component {
                             }}
                             newTask={this.state.newTask}
                         />
-                        <ul className="my-tasks">
-                            {this.state.tasks.map((task, index) => (
-                                <li key={index}>
-                                    {task}
-                                    <div>
-                                        <FaEdit
-                                            onClick={e => {
-                                                const { tasks } = this.state;
-                                                this.setState({
-                                                    index,
-                                                    newTask: tasks[index]
-                                                });
-                                                console.log("Edit", index);
-                                            }}
-                                            className="edit"
-                                        />
-                                        <FaWindowClose
-                                            onClick={e => {
-                                                const { tasks } = this.state;
-                                                const newTasks = [...tasks];
-                                                newTasks.splice(index, 1);
-                                                this.setState({
-                                                    tasks: [...newTasks]
-                                                });
-                                            }}
-                                            className="delete"
-                                        />
-                                    </div>
-                                </li>
-                            ))}
-                            {this.state.tasks.length === 0 && (
-                                <span className="no-tasks">No tasks</span>
-                            )}
-                        </ul>
+                        <List
+                            tasks={tasks}
+                            handleEdit={(e, index) => {
+                                const { tasks } = this.state;
+                                this.setState({
+                                    index,
+                                    newTask: tasks[index]
+                                });
+                            }}
+                            handleDelete={(e, index) => {
+                                const { tasks } = this.state;
+                                const newTasks = [...tasks];
+                                newTasks.splice(index, 1);
+                                this.setState({
+                                    tasks: [...newTasks]
+                                });
+                            }}
+                        />
                     </div>
                 </div>
             </div>
