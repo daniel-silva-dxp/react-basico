@@ -4,17 +4,25 @@ import { FaEdit, FaWindowClose } from "react-icons/fa";
 
 import "./list.css";
 
-const List = ({ children, myKey }) => {
+const List = ({ tasks, handleEdit, handleDelete }) => {
     return (
         <ul className="my-tasks">
-            <li key={myKey}>
-                {children}
-                <div>
-                    <FaEdit className="edit" />
-                    <FaWindowClose className="delete" />
-                </div>
-            </li>
-            ))
+            {tasks.map((task, index) => (
+                <li key={index}>
+                    {task}
+                    <div>
+                        <FaEdit
+                            onClick={e => handleEdit(e, index)}
+                            className="edit"
+                        />
+                        <FaWindowClose
+                            onClick={e => handleDelete(e, index)}
+                            className="delete"
+                        />
+                    </div>
+                </li>
+            ))}
+            {tasks.length === 0 && <span className="no-tasks">No tasks</span>}
         </ul>
     );
 };
