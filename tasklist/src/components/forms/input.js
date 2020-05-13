@@ -3,8 +3,15 @@ import React from "react";
 
 import "./input.css";
 
-const Input = ({ handleChange, newType, msg }) => {
-    return <input type={newType} onChange={handleChange} placeholder={msg} />;
+const Input = ({ handleChange, newType, msg, value }) => {
+    return (
+        <input
+            type={newType}
+            onChange={handleChange}
+            value={value}
+            placeholder={msg}
+        />
+    );
 };
 
 export default Input;
