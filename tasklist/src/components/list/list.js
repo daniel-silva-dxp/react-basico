@@ -9,7 +9,7 @@ const List = ({ tasks, handleEdit, handleDelete }) => {
         <ul className="my-tasks">
             {tasks.map((task, index) => (
                 <li key={index}>
-                    {task}
+                    {`${index + 1} - ${task}`}
                     <div>
                         <FaEdit
                             onClick={e => handleEdit(e, index)}
