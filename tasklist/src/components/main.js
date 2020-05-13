@@ -15,7 +15,8 @@ class Main extends Component {
                 "Estudar Reactjs",
                 "Estudar Inglês",
                 "Estudar para certificação"
-            ]
+            ],
+            index: -1
         };
     }
 
@@ -28,7 +29,7 @@ class Main extends Component {
                         <Form
                             addTask={e => {
                                 e.preventDefault();
-                                const { tasks } = this.state;
+                                const { tasks, index } = this.state;
                                 let { newTask } = this.state;
                                 newTask = newTask.trim();
 
@@ -36,9 +37,19 @@ class Main extends Component {
                                     return;
                                 }
                                 const myTasks = [...tasks];
-                                this.setState({
-                                    tasks: [...myTasks, newTask]
-                                });
+
+                                if (index === -1) {
+                                    this.setState({
+                                        tasks: [...myTasks, newTask],
+                                        newTask: ""
+                                    });
+                                } else {
+                                    myTasks[index] = newTask;
+                                    this.setState({
+                                        tasks: [...myTasks],
+                                        index: -1
+                                    });
+                                }
                             }}
                             setTask={e => {
                                 this.setState({
@@ -54,6 +65,11 @@ class Main extends Component {
                                     <div>
                                         <FaEdit
                                             onClick={e => {
+                                                const { tasks } = this.state;
+                                                this.setState({
+                                                    index,
+                                                    newTask: tasks[index]
+                                                });
                                                 console.log("Edit", index);
                                             }}
                                             className="edit"
@@ -72,6 +88,9 @@ class Main extends Component {
                                     </div>
                                 </li>
                             ))}
+                            {this.state.tasks.length === 0 && (
+                                <span className="no-tasks">No tasks</span>
+                            )}
                         </ul>
                     </div>
                 </div>
